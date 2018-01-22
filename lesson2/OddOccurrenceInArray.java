@@ -10,8 +10,14 @@ import java.util.Iterator;
  *  그 카운트 값이 홀수이면 나머지 하나가 unPaired 인 채로 남게 된다. 
  *  값이 홀수인 unPaired 값을 출력하는 전략.
  *
+ *  jaeyoung , yonmni : 두 분 다 set 자료구조중 hashSet을 활용하여 존재하면 제거를 하고,
+ *  존재하지 않으면 set에 추가를 함으로써 최종적으로 홀수번 존재하는 숫자만 남게 하는 전략을 세웠다.
  *
+ * 1. set 이용 ( 중복 X 자료구조 )
+ * 2. set을 이용하여 중복이 되는 경우는 '짝수'개의 요소를 가지고 있음을 의미 --> 짝수개일때 set에서 제거
+ * 3. 홀수개인 하나만의 원소만 set에 남아있다. --> output
  */
+
 public class OddOccurrenceInArray {
     public int solution(int[] A) {
         int result=0;

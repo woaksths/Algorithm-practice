@@ -18,6 +18,7 @@ import org.junit.Test;
  *   the solution returned a wrong answer (got 0 expected 20).
  */
 public class TapeEquilibrium {
+
     @Test
     public void testSolution(){
         int array[] = {1,1};

@@ -1,3 +1,5 @@
+import org.junit.Assert;
+import org.junit.Test;
 
 public class FrogJmp {
     /**
@@ -9,7 +11,10 @@ public class FrogJmp {
      *   몫을 구하고 나머지가 존재하면 +1 시켜준다.
      *
      */
-
+    @Test
+    public void testSolution(){
+        Assert.assertEquals(3,solution(10,85,30));
+    }
     public int solution(int X,int Y, int D){
         int result = (Y-X)/D;
         int rem = (Y-X) % D;
@@ -22,6 +27,6 @@ public class FrogJmp {
 
     public static void main(String args[]){
         FrogJmp frogJmp = new FrogJmp();
-        frogJmp.solution(10, 85, 30);
+        System.out.println(frogJmp.solution(10, 85, 30));
     }
 }

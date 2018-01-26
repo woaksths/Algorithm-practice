@@ -1,4 +1,7 @@
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -21,7 +24,11 @@ import java.util.Set;
  */
 
 public class PermMissingElem {
-
+    @Test
+    public void testSolution(){
+        int A[] = {2,3,1,5};
+        Assert.assertEquals(4,solution2(A));
+    }
     public int solution(int[] A){
         ArrayList<Integer> arrayList = new ArrayList<>();
         for(int i=1; i<=A.length+1; i++){

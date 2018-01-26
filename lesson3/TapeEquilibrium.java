@@ -1,3 +1,5 @@
+import org.junit.Assert;
+import org.junit.Test;
 
 /****
  *
@@ -16,6 +18,11 @@
  *   the solution returned a wrong answer (got 0 expected 20).
  */
 public class TapeEquilibrium {
+    @Test
+    public void testSolution(){
+        int array[] = {1,1};
+        Assert.assertEquals(0,solution(array));
+    }
     public int solution(int[] A) {
         int min = Integer.MAX_VALUE;
         int rightSum = 0;

@@ -15,6 +15,7 @@ public class FrogJmp {
     public void testSolution(){
         Assert.assertEquals(3,solution(10,85,30));
     }
+
     public int solution(int X,int Y, int D){
         int result = (Y-X)/D;
         int rem = (Y-X) % D;
@@ -23,10 +24,5 @@ public class FrogJmp {
         }else{
             return result;
         }
-    }
-
-    public static void main(String args[]){
-        FrogJmp frogJmp = new FrogJmp();
-        System.out.println(frogJmp.solution(10, 85, 30));
     }
 }

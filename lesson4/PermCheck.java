@@ -13,8 +13,6 @@ import java.util.Arrays;
  * 배열의 수 중 가장 큰 값 범위 내에 모든 수가 존재해야한다는 것임. 없으면 missing Value.
  *
  *  시간복잡도 : expected worst-case time complexity is O(N);
- *  해결 전략1: 가장 큰 수 찾고, 1부터 큰 수 합이 배열의 합과 같으면 permutation 보다 작으면 not permutation
- *
  *
  *  단 각 숫자들은 한번씩만 출현해야한다
  *  해결 전략2: 배열을 정렬해주고, 정렬된 배열의 최댓값을 가지고 1부터 최댓값까지 새로운 배열을 만들고

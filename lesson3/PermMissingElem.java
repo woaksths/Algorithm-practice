@@ -33,14 +33,4 @@ public class PermMissingElem {
         return sum;
     }
 }
-/*  public int solution(int[] A){
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        for(int i=1; i<=A.length+1; i++){
-            arrayList.add(i);
-        }
-        for(int i=0; i<A.length; i++){
-            int idx= arrayList.indexOf(A[i]);
-            arrayList.remove(idx);
-        }
-        return arrayList.get(0);
-}*/
+

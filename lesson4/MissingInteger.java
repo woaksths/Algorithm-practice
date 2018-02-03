@@ -21,10 +21,12 @@ import java.util.*;
 public class MissingInteger {
     @Test
     public void testSolution(){
-        int A[] = {1,2,3};
-        Assert.assertEquals(4, solution(A));
+        int A[] = {1,2,3,6,4,1,2};
+        int B[] = {-1,-3};
+      //  Assert.assertEquals(4, solution(A));
+        Assert.assertEquals(solution2(A), 5);
     }
-    public int solution(int[] A) {
+    public int solution(int[] A) { // 55%
         // write your code in Java SE 8
         Arrays.sort(A);
         TreeSet<Integer> set = new TreeSet<>();
@@ -49,4 +51,37 @@ public class MissingInteger {
         return list.get(0);
     }
 
+    public int solution2(int[] A){ // 77% 개선
+        Arrays.sort(A);
+        int max = Integer.MIN_VALUE;
+        for(int i=0; i<A.length; i++){
+            if (max < A[i]) {
+                max = A[i];
+            }
+        }
+        if(max <0){
+            return 1;
+        }
+        Set<Integer> set = new HashSet<>();
+        for(int i=1; i<= max; i++){
+          set.add(i);
+        }
+        for(int i=0; i<A.length; i++){
+         set.remove(A[i]);
+        }
+        int min =Integer.MAX_VALUE;
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()){
+            int num = (int) iterator.next();
+            if(min > num){
+                min = num;
+            }
+        }
+        if(set.size()==0){
+            return max+1;
+        }else{
+            //set 에서 제일 작은 수
+            return min;
+        }
+    }
 }

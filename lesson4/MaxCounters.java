@@ -3,15 +3,19 @@ package lesson4;
 import org.junit.Assert;
 import org.junit.Test;
 
+
 /**
  *
- * 문제 해석: counter 배열에 A[i]의 값을 인덱스로 삼아
- * A[i] 가 나오면  counter 배열의 A[i] 인덱스에 +1을 추가하고,
- * A[i]가 n+1이라면 제일 큰 카운터 값을 모든 인덱스에 심어준다
+ * 풀이순서
  *
- *  expected worst-case time complexity is O(N+M);
+ * 1. N size의 새로운 배열 result 을 만든다
+ * 2. A 배열을 반복을 돌면서 값이 N+1 인지, 1~N인지 검사를 한다.
+ * 3. 1~N 인 경우에 result 배열의 해당 값의 인덱스에 +1을 더해준다.
+ * 4. N+1인 경우에 result 배열에서 최댓값을 찾아서 해당 값으로 모든 idx 값에 setting 한다.
+ *
+ * 시간복잡도 N(m*n)로 인해 테스트 결과 66%
+ * 
  */
-
 public class MaxCounters {
     @Test
     public void test() {
@@ -34,15 +38,48 @@ public class MaxCounters {
                 for(int k=0; k<result.length; k++){ //모든 idx 최댓값 setting
                    result[k] = max;
                 }
-            }else{ // Increment operation
+            }else if(A[i]>=1 && A[i]<=N){ // Increment operation
                 result[A[i]-1]++;
             }
         }
         return result;
     }
 
-    public int[] solution2(int N, int[] A) {
+    /**
+     *  jaeyoung
+     *
+     * 해결 전략
+     *
+     * 1.
+     * 2.
+     * 3.
+     * 4.
+     *
+     */
+    static int[] solution2(int N, int[] A) {
+        int[] result = new int[N];
+        int prevMaxCnt = 0;
+        int newMaxCnt = 0;
 
-        return A;
+        for(int i=0; i<A.length; i++) {
+            if(A[i]==N+1 && prevMaxCnt!=newMaxCnt) {
+                prevMaxCnt = newMaxCnt;
+            } else if (A[i]==N+1)
+                continue;
+            else {
+                if(result[(A[i]-1)]<prevMaxCnt)
+                    result[(A[i]-1)] = prevMaxCnt + 1;
+                else
+                    result[(A[i]-1)]++;
+                if(result[(A[i]-1)]>newMaxCnt) {
+                    newMaxCnt++;
+                }
+            }
+        }
+        for(int i=0; i<N; i++)
+            if(result[i]<prevMaxCnt)
+                result[i] = prevMaxCnt;
+
+        return result;		// 100%
     }
 }

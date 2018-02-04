@@ -4,41 +4,67 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-/***
- *
- * 2018.01.26
- * 문제 해석: The goal is to check whetjer array A is a permutation
- * missing Value 존재하면 not permutation, 여기서 missing Value라고 하면
- * 배열의 수 중 가장 큰 값 범위 내에 모든 수가 존재해야한다는 것임. 없으면 missing Value.
- *
- *  시간복잡도 : expected worst-case time complexity is O(N);
- *
- *  단 각 숫자들은 한번씩만 출현해야한다
- *  해결 전략2: 배열을 정렬해주고, 정렬된 배열의 최댓값을 가지고 1부터 최댓값까지 새로운 배열을 만들고
- *  두 배열의 인덱스 값을 비교하여 문제를 해결하였다
- */
+
 public class PermCheck {
     @Test
     public void test(){
         int A[]={9, 5, 7, 3, 2, 7, 3, 1, 10, 8}; //4,6
         Assert.assertEquals(0, solution(A));
     }
+    /***
+     *
+     * 풀이 순서
+     * 1. A의 배열과 같은 길이의 배열을 만든다
+     * 2. 새로운 배열에 반복을 돌면서 1부터 N (길이)만큼 값을 setting 한다
+     * 3. 그리고 나서 A를 정렬시키고 정렬된 A와 새로운 배열 B를 비교하여
+     * 4. 다른 부분이 있으면 missing Value가 있다고 가정하고 문제해결하였다.
+     */
+
+
     public int solution(int[] A) {
         // write your code in Java SE 8
-        Arrays.sort(A);
         int b[] = new int[A.length];
+        int flag = 1;
+        Arrays.sort(A);  // Arrays.sort() 를 쓰면 시간복잡도가 O(n*log(n)) 이 되므로 좋은 방법이 아님
         for(int i=0; i<A.length; i++){
             b[i] = i+1;
         }
-        int flag = 1;
         for(int i=0; i<b.length; i++){
-            if(A[i] ==b[i])
+            if(A[i] ==b[i]) {
                 continue;
-            else
+            }else{
                 flag=0;
                 break;
+            }
         }
             return flag;
         }
+
+
+
+    /*
+	 *  해결전략 - jaeyoung
+	 *  1. 전제
+	 *  1.1. A배열에는 1 ~ n+1까지의 숫자 중 n개의 숫자만 존재
+	 *  1.2. A배열에 존재하지 않는 숫자를 찾는다.
+	 *
+	 *  2. 프로세스
+	 *  2.1. Set에 1~n+1의 숫자를 입력한다.
+	 *  2.2. 배열을 순회하면서 존재하는 숫자를 제거한다.
+	 *  2.3. Set에 최종으로 남는 숫자가 존재하지 않는 숫자다.
+	 */
+
+    static int solution2(int[] A) {
+        Set<Integer> set = new HashSet<>();
+
+        for(int i=1; i<A.length+1; i++)
+            set.add(i);
+
+        for(int i=0; i<A.length; i++)
+            set.remove(A[i]);
+        return set.iterator().hasNext()==true ? 0 : 1;
+    }
 }

@@ -6,9 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Distinct {
-    @Test
-    public void test(){
-    }
 
     public int solution(int[] A) {
         // write your code in Java SE 8

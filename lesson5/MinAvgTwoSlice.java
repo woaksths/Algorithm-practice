@@ -2,6 +2,8 @@ package lesson5;
 import org.junit.Assert;
 import org.junit.Test;
 
+
+
 public class MinAvgTwoSlice {
     /**
      *  The average of a slice (P, Q) is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice.
@@ -18,13 +20,11 @@ public class MinAvgTwoSlice {
         // write your code in Java SE 8
         int startIdx = -1;
         double compareSum = 99999999;
-
         for(int i=0; i<A.length; i++){
             int sum = A[i];
             for(int j=i+1; j<A.length; j++){
                 sum += A[j];
                 double result = sum / (double) (j-i +1);
-
                 if(result< compareSum){
                     compareSum =result;
                     startIdx= i;
@@ -34,5 +34,9 @@ public class MinAvgTwoSlice {
             }
         }
         return startIdx; // correctness 100 , performance : 20
+    }
+
+    public int solution2(int[] A) {
+        return 0;
     }
 }

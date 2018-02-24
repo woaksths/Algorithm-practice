@@ -47,6 +47,7 @@ public class PassingCars {
 
         for (int i = 0; i < A.length; i++) {
             if (i == 0) {
+
                 if (A[i] == 0) {
                     zeroSum[i] = 1;
                 } else {
@@ -60,6 +61,7 @@ public class PassingCars {
                 }
             }
         }
+
         for (int i = 0; i < A.length; i++) {
             if (A[i] == 1) {
                 sum += zeroSum[i];
@@ -67,12 +69,12 @@ public class PassingCars {
                 continue;
             }
         }
-        if (sum > 1000000000 || sum < 0) {
+        if (sum > 1000000000) {
             return -1;
         } else {
             //The function should return −1
             // if the number of pairs of passing cars exceeds 1,000,000,000.
-            return sum; // 1000%
+            return sum; // 100%
         }
     }
 }

@@ -25,7 +25,11 @@ public class Triangle {
         for(int i=0; i<A.length; i++){
             for(int j= i+1; j<A.length; j++){
                 for(int k = j+1; k<A.length ; k++){
-                    if (A[i] + A[j] > A[k] && A[j] + A[k] > A[i] && A[k]+A[i]>A[j]) {
+                   long sum1 = (long)A[i] + (long)A[j];
+                   long sum2 = (long)A[j] + (long)A[k];
+                   long sum3 =  (long)A[k] + (long)A[i];
+
+                    if (sum1 > A[k] && sum2 > A[i] && sum3>A[j]) {
                         flag = 1;
                         break;
                     }else{
@@ -37,7 +41,7 @@ public class Triangle {
         if(flag == 0){
             return 0;
         }else{
-            return 1; // 56% O(n^3);
+            return 1; // correctness 100%  performance 0 62% O(n^3);
         }
     }
 }

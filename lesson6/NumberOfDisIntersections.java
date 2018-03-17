@@ -10,11 +10,10 @@ public class NumberOfDisIntersections {
      * 1. 제일 큰 원의 반지름이 겹치는 구간 n개 포함.
      * 2. 두번 째 큰 반지름과 제일 큰 원이 겹친다면 제일 큰 원은 제외하고 나머지 겹치는 구간을 포함
      *  -> 1에서 포함하였기 때문에 중복을 방지시키기 위함.
+     * 3. 반지름이 제일 큰 인덱스를 순서대로 정렬, 인덱스도 같이 정렬시킨다
+     * 4. idx - idx <= r+r 이면 겹치는 구간.
      *
      *  시간복잡도 : O(N*log(N))
-     *
-     *  The following issues have been detected: wrong answers, timeout errors.
-     *  For example, for the input [1, 2147483647, 0] the solution returned a wrong answer (got 1 expected 2).
      *
      */
     @Test
@@ -36,6 +35,7 @@ public class NumberOfDisIntersections {
     // idx:0   3-0> 1+1, 5-0 >1+0
     // idx:3   5-3> 1+0
     /// sum: 5 +  4 +  2   === 11
+
         // 1. 배열의 값의 큰 순서대로 idx를 정렬 시키는게 첫 단계
         int idxSort[] = new int[A.length];
         for(int i=0; i<A.length; i++){
@@ -60,11 +60,11 @@ public class NumberOfDisIntersections {
         int sum =0;
         for(int i=0; i<A.length; i++){
             int count = 0;
-           // System.out.println("idx : "+ idxSort[i] +" R:" + A[i]);
+
             for(int j=i+1; j<A.length; j++){
                 long sumRadius = (long)A[i]+ (long)A[j];
                 int gapIdx = Math.abs(idxSort[i]-idxSort[j]);
-               // System.out.println("sumRadius: "+ sumRadius + " gapIdx:"+ gapIdx);
+
                 if(gapIdx <= sumRadius ){
                     count++;
                 }else{
@@ -76,7 +76,7 @@ public class NumberOfDisIntersections {
                 return -1;
             }
         }
-        return sum; // 56%  correctness 100 % ;
-                    // performance 12 % ;;;
+        return sum; //  correctness 100 % ;
+                    // performance 12 % ;;; n^2  --> n*log(n)으로 바꾸기
     }
 }

@@ -3,6 +3,8 @@ package lesson6;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class Triangle {
     @Test
     public void test(){
@@ -44,4 +46,20 @@ public class Triangle {
             return 1; // correctness 100%  performance 0 62% O(n^3);
         }
     }
+
+    public static int solution2(int[] A) {
+        int N = A.length;
+
+        Arrays.sort(A);
+
+        for (int i = 0; i < N - 2; i++) {
+            if (A[i + 1] > A[i + 2] - A[i]&&
+                    A[i + 2] > A[i] - A[i + 1]&&
+                    A[i] > A[i + 1] - A[i + 2]) {
+                return 1;
+            }
+        }
+        return 0;
+    }  // stack overflow 참조
+
 }

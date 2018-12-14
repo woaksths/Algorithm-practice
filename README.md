@@ -1,2 +1,2 @@
 # Algorithm-practice
-Algorithm study using codility platform
+Algorithm study using boj, codeforces.
